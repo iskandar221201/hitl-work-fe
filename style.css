@@ -300,22 +300,24 @@ img { display: block; max-width: 100%; }
 /* --- PROBLEM LIST --- */
 .problem-list {
   margin-top: 32px;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
-  align-items: center;
-  gap: 12px;
+  align-items: flex-start;
+  gap: 14px;
+  text-align: left;
 }
 .problem-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
   font-size: 17px;
   font-weight: 400;
   color: var(--color-body-muted);
   letter-spacing: -0.374px;
-  position: relative;
-  padding-left: 0;
 }
 .problem-list li::before {
   content: '—';
-  margin-right: 10px;
+  flex-shrink: 0;
   color: var(--color-primary-on-dark);
   font-weight: 300;
 }
