@@ -538,7 +538,6 @@ img { display: block; max-width: 100%; }
   .hero-display { font-size: 40px; }
   .agent-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
 /* Tablet portrait ≤ 834px */
 @media (max-width: 834px) {
   .nav-links { display: none; }
@@ -562,7 +561,23 @@ img { display: block; max-width: 100%; }
   .nav-links.is-open a { font-size: 17px; color: #fff; }
 
   .modes-grid  { grid-template-columns: 1fr; }
-  /* Carousel: switch to horizontal scroll snap on mobile */
+  /* Agent carousel on mobile */
+  .agent-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: var(--space-card-gap);
+    padding-bottom: 4px;
+  }
+  .agent-grid::-webkit-scrollbar { display: none; }
+  .agent-grid .agent-card {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+  }
+  .agent-dots { display: flex; }
+  /* Command carousel on mobile */
   .command-track {
     display: flex;
     overflow-x: auto;

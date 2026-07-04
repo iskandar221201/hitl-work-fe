@@ -69,6 +69,18 @@
     }, { passive: true });
   }
 
+  var agentGrid = document.querySelector('.agent-grid');
+  var agentDots = document.querySelectorAll('.agent-dots .dot');
+
+  if (agentGrid && agentDots.length) {
+    agentGrid.addEventListener('scroll', function () {
+      var index = Math.round(agentGrid.scrollLeft / agentGrid.offsetWidth);
+      agentDots.forEach(function (d, i) {
+        d.classList.toggle('active', i === index);
+      });
+    }, { passive: true });
+  }
+
 
   // Simple intersection observer — tiles fade up on enter
   var tiles = document.querySelectorAll('.tile');
