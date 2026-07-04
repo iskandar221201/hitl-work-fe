@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HITL·Work for FE — Design System to Code</title>
+  <meta name="description" content="A human-in-the-loop workflow for turning design systems into production UI components. Four agents, one human, full control." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- GLOBAL NAV -->
+  <nav class="global-nav" id="global-nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-wordmark">HITL·FE</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#modes">Modes</a></li>
+        <li><a href="https://github.com/iskandar221201/hitl-work-fe" target="_blank">GitHub</a></li>
+      </ul>
+      <a href="https://github.com/iskandar221201/hitl-work-fe" target="_blank" class="btn-dark-utility nav-cta">Download</a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO TILE — white -->
+  <section class="tile tile-light tile-hero">
+    <div class="tile-inner">
+      <p class="eyebrow">HITL·Work for FE</p>
+      <h1 class="hero-display">Design system<br>to code.</h1>
+      <p class="lead">A human-in-the-loop workflow for frontend.<br>Four agents. Every decision, yours.</p>
+      <div class="cta-group">
+        <a href="https://github.com/iskandar221201/hitl-work-fe" target="_blank" class="btn-primary">Get Started</a>
+        <a href="#how-it-works" class="btn-secondary-pill">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM TILE — dark -->
+  <section class="tile tile-dark">
+    <div class="tile-inner">
+      <h2 class="display-lg">AI is weak<br>at frontend.</h2>
+      <p class="lead-muted">It generates UI that works but never feels right.<br>Generic components. Inconsistent tokens. No human in the loop.</p>
+      <ul class="problem-list">
+        <li>Colors that don't match your design system</li>
+        <li>Components that ignore spacing rules</li>
+        <li>No checkpoint before code hits your repo</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS TILE — parchment -->
+  <section class="tile tile-parchment" id="how-it-works">
+    <div class="tile-inner">
+      <p class="eyebrow-dark">The workflow</p>
+      <h2 class="display-lg-dark">Four agents.<br>One human.</h2>
+      <p class="tagline-body">Every agent stops and waits for your approval before moving on. No silent decisions.</p>
+      <div class="agent-grid">
+        <div class="agent-card">
+          <div class="agent-number">01</div>
+          <h3 class="agent-title">Planner</h3>
+          <p class="agent-desc">Reads your DESIGN.md — in any format — normalizes the tokens, and proposes a component build order. You approve the scope.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-number">02</div>
+          <h3 class="agent-title">Executor</h3>
+          <p class="agent-desc">Generates one component at a time, adapted to your stack. Every variant, every state, every a11y attribute. You review each one.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-number">03</div>
+          <h3 class="agent-title">QA</h3>
+          <p class="agent-desc">Checks consistency against the design system, accessibility compliance, and code quality. Issues are graded PASS, FAIL, or Minor.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-number">04</div>
+          <h3 class="agent-title">Skill Extractor</h3>
+          <p class="agent-desc">Logs every correction you made as a reusable rule. The next session starts smarter — without re-explaining the same preferences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODES TILE — dark 2 -->
+  <section class="tile tile-dark-2" id="modes">
+    <div class="tile-inner">
+      <p class="eyebrow-on-dark">Entry modes</p>
+      <h2 class="display-lg">Two ways<br>to start.</h2>
+      <div class="modes-grid">
+        <div class="mode-card">
+          <div class="mode-label">Mode A</div>
+          <h3 class="mode-title">You have a DESIGN.md</h3>
+          <p class="mode-desc">Drop in your design system document — from Figma exports, community templates, or your own spec. The Planner parses any format.</p>
+          <div class="mode-flow">
+            <span>DESIGN.md</span>
+            <span class="arrow">→</span>
+            <span>Planner</span>
+            <span class="arrow">→</span>
+            <span>Pipeline</span>
+          </div>
+        </div>
+        <div class="mode-card">
+          <div class="mode-label">Mode B</div>
+          <h3 class="mode-title">You have a mockup</h3>
+          <p class="mode-desc">Upload a screenshot or Figma frame. The Planner derives a DESIGN.md from your visual — you review it — then the normal pipeline begins.</p>
+          <div class="mode-flow">
+            <span>Screenshot</span>
+            <span class="arrow">→</span>
+            <span>Draft spec</span>
+            <span class="arrow">→</span>
+            <span>Pipeline</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HITL SECTION — white -->
+  <section class="tile tile-light">
+    <div class="tile-inner tile-inner-narrow">
+      <p class="eyebrow">The loop</p>
+      <h2 class="display-lg-ink">Every checkpoint,<br>three answers.</h2>
+      <div class="command-row">
+        <div class="command-block">
+          <code class="cmd">APPROVE</code>
+          <p class="cmd-desc">Accept the output. The next agent activates.</p>
+        </div>
+        <div class="command-block">
+          <code class="cmd">REVISE: [notes]</code>
+          <p class="cmd-desc">Give specific changes. The agent corrects and re-presents.</p>
+        </div>
+        <div class="command-block">
+          <code class="cmd">REJECT</code>
+          <p class="cmd-desc">Scrap it entirely. The agent asks for a new direction.</p>
+        </div>
+      </div>
+      <p class="tagline-sub">No agent proceeds without an explicit signal from you.</p>
+    </div>
+  </section>
+
+  <!-- CTA TILE — dark -->
+  <section class="tile tile-dark tile-cta">
+    <div class="tile-inner">
+      <h2 class="display-lg">Start building.</h2>
+      <p class="lead-muted">Free. Open source. Model-agnostic.<br>Works with Claude, GPT-4, Gemini — any chat AI.</p>
+      <div class="cta-group">
+        <a href="https://github.com/iskandar221201/hitl-work-fe" target="_blank" class="btn-primary">Download on GitHub</a>
+        <a href="https://human-in-the-loop-workflow.vercel.app" target="_blank" class="btn-link-on-dark">HITL·Work original →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://github.com/iskandar221201/hitl-work-fe" target="_blank">GitHub</a>
+        <a href="https://github.com/iskandar221201/hitl-work-fe/blob/main/README.md" target="_blank">README</a>
+        <a href="https://human-in-the-loop-workflow.vercel.app" target="_blank">HITL·Work</a>
+        <a href="https://github.com/iskandar221201" target="_blank">iskandar221201</a>
+      </div>
+      <p class="footer-legal">© 2026 HITL·Work for FE · MIT License</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">HITL·Work</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
