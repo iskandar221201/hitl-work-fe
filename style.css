@@ -32,8 +32,13 @@
 
   --shadow-product: rgba(0,0,0,0.22) 3px 5px 30px 0;
 
-  --spacing-section: 80px;
-  --nav-height: 44px;
+  /* Spacing system — all structural spacing derives from these */
+  --space-card-gap:     20px;  /* gap between cards in any grid */
+  --space-card-pad:     24px;  /* internal padding of every card */
+  --space-card-top:     48px;  /* margin-top before every card grid */
+  --space-cta-top:      32px;  /* margin-top before CTA group */
+  --space-section:      80px;  /* tile vertical padding */
+  --nav-height:         44px;
 }
 
 /* --- RESET --- */
@@ -91,6 +96,7 @@ img { display: block; max-width: 100%; }
   transition: color 100ms ease-out;
 }
 .nav-links a:hover { color: #fff; }
+.nav-cta { margin-left: auto; }
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -189,29 +195,26 @@ img { display: block; max-width: 100%; }
   gap: 12px;
   align-items: center;
   justify-content: center;
-  margin-top: 32px;
+  margin-top: var(--space-cta-top);
 }
 
 /* --- TILES --- */
 .tile {
   width: 100%;
-  padding: var(--spacing-section) 24px;
+  padding: var(--space-section) 24px;
 }
-.tile-hero { padding-top: calc(var(--nav-height) + var(--spacing-section)); }
-
-.tile-light  { background: var(--color-canvas); }
+.tile-hero { padding-top: calc(var(--nav-height) + var(--space-section)); }
+.tile-light     { background: var(--color-canvas); }
 .tile-parchment { background: var(--color-parchment); }
-.tile-dark   { background: var(--color-tile-dark-1); }
-.tile-dark-2 { background: var(--color-tile-dark-2); }
+.tile-dark      { background: var(--color-tile-dark-1); }
+.tile-dark-2    { background: var(--color-tile-dark-2); }
 
 .tile-inner {
   max-width: 980px;
   margin: 0 auto;
   text-align: center;
 }
-.tile-inner-narrow {
-  max-width: 720px;
-}
+.tile-inner-narrow { max-width: 720px; }
 
 /* --- EYEBROW --- */
 .eyebrow {
@@ -245,6 +248,8 @@ img { display: block; max-width: 100%; }
   color: var(--color-ink);
   margin-bottom: 16px;
 }
+
+/* display-lg: white (on dark tiles) */
 .display-lg {
   font-size: 40px;
   font-weight: 600;
@@ -253,20 +258,17 @@ img { display: block; max-width: 100%; }
   color: var(--color-body-on-dark);
   margin-bottom: 16px;
 }
-.display-lg-dark {
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 1.10;
-  color: var(--color-ink);
-  margin-bottom: 16px;
-}
+
+/* display-lg-ink: dark (on light/parchment tiles) */
 .display-lg-ink {
   font-size: 40px;
   font-weight: 600;
   line-height: 1.10;
+  letter-spacing: 0;
   color: var(--color-ink);
   margin-bottom: 16px;
 }
+
 .lead {
   font-size: 21px;
   font-weight: 400;
@@ -280,14 +282,13 @@ img { display: block; max-width: 100%; }
   line-height: 1.38;
   letter-spacing: 0;
   color: var(--color-body-muted);
-  margin-bottom: 40px;
 }
 .tagline-body {
   font-size: 17px;
   font-weight: 400;
   color: var(--color-ink-muted);
-  margin-bottom: 48px;
   margin-top: 8px;
+  margin-bottom: 48px;
 }
 .tagline-sub {
   font-size: 17px;
@@ -322,19 +323,29 @@ img { display: block; max-width: 100%; }
   font-weight: 300;
 }
 
-/* --- AGENT GRID --- */
-.agent-grid {
+/* --- CARD GRID (shared base) ---
+   All card grids: same gap, same margin-top.
+   Card padding unified at --space-card-pad (24px).
+   Only grid-template-columns differs per section.
+   ------------------------------------------- */
+.agent-grid,
+.modes-grid,
+.command-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-top: 48px;
+  gap: var(--space-card-gap);
+  margin-top: var(--space-card-top);
   text-align: left;
 }
+.agent-grid   { grid-template-columns: repeat(4, 1fr); }
+.modes-grid   { grid-template-columns: 1fr 1fr; }
+.command-row  { grid-template-columns: repeat(3, 1fr); }
+
+/* --- AGENT CARDS --- */
 .agent-card {
   background: var(--color-canvas);
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: var(--space-card-pad);
 }
 .agent-number {
   font-size: 12px;
@@ -358,19 +369,12 @@ img { display: block; max-width: 100%; }
   color: var(--color-ink-muted);
 }
 
-/* --- MODES GRID --- */
-.modes-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 48px;
-  text-align: left;
-}
+/* --- MODE CARDS --- */
 .mode-card {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-lg);
-  padding: 32px;
+  padding: var(--space-card-pad);
 }
 .mode-label {
   font-size: 12px;
@@ -411,19 +415,12 @@ img { display: block; max-width: 100%; }
   font-weight: 300;
 }
 
-/* --- COMMAND ROW --- */
-.command-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 48px;
-  text-align: left;
-}
+/* --- COMMAND BLOCKS --- */
 .command-block {
   background: var(--color-parchment);
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: var(--space-card-pad);
 }
 .cmd {
   display: inline-block;
@@ -479,10 +476,10 @@ img { display: block; max-width: 100%; }
   margin-top: 8px;
 }
 .footer-meta {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
   color: var(--color-primary);
-  letter-spacing: -0.08px;
+  letter-spacing: -0.12px;
   margin-top: 12px;
   opacity: 0.7;
 }
@@ -496,19 +493,11 @@ img { display: block; max-width: 100%; }
   color: var(--color-ink);
   text-align: center;
   margin-top: 40px;
-  padding-bottom: 0;
   opacity: 0.15;
   user-select: none;
   white-space: nowrap;
   overflow: visible;
 }
-
-/* --- TILE CTA extra spacing --- */
-.tile-cta .lead-muted { margin-bottom: 0; }
-.tile-cta .cta-group { margin-top: 40px; }
-
-/* nav cta margin */
-.nav-cta { margin-left: auto; }
 
 /* ============================================================
    RESPONSIVE
@@ -523,7 +512,7 @@ img { display: block; max-width: 100%; }
 /* Tablet portrait ≤ 834px */
 @media (max-width: 834px) {
   .nav-links { display: none; }
-  .nav-cta { display: none; }
+  .nav-cta   { display: none; }
   .nav-hamburger { display: flex; }
   .nav-hamburger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
   .nav-hamburger.is-open span:nth-child(2) { opacity: 0; }
@@ -542,25 +531,25 @@ img { display: block; max-width: 100%; }
   }
   .nav-links.is-open a { font-size: 17px; color: #fff; }
 
-  .modes-grid { grid-template-columns: 1fr; }
+  .modes-grid  { grid-template-columns: 1fr; }
   .command-row { grid-template-columns: 1fr; }
   .hero-display { font-size: 34px; }
-  .display-lg, .display-lg-dark, .display-lg-ink { font-size: 34px; }
+  .display-lg, .display-lg-ink { font-size: 34px; }
   .lead, .lead-muted { font-size: 19px; }
-  :root { --spacing-section: 64px; }
+  :root { --space-section: 64px; }
 }
 
 /* Phone ≤ 640px */
 @media (max-width: 640px) {
   .hero-display { font-size: 28px; letter-spacing: -0.2px; }
-  .display-lg, .display-lg-dark, .display-lg-ink { font-size: 28px; }
+  .display-lg, .display-lg-ink { font-size: 28px; }
   .lead, .lead-muted { font-size: 17px; }
   .agent-grid { grid-template-columns: 1fr; }
   .cta-group { flex-direction: column; align-items: stretch; }
   .cta-group .btn-primary,
   .cta-group .btn-secondary-pill { text-align: center; }
   .footer-wordmark { letter-spacing: -2px; }
-  :root { --spacing-section: 48px; }
+  :root { --space-section: 48px; }
 }
 
 /* Reduced motion */
