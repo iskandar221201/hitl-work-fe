@@ -247,6 +247,7 @@ img { display: block; max-width: 100%; }
   letter-spacing: -0.28px;
   color: var(--color-ink);
   margin-bottom: 16px;
+  text-wrap: balance;
 }
 
 /* display-lg: white (on dark tiles) */
