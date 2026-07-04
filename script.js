@@ -56,7 +56,20 @@
     }, { passive: true });
   }
 
-  /* --- SCROLL REVEAL --- */
+  /* --- CAROUSEL DOT SYNC --- */
+  var track = document.querySelector('.command-track');
+  var dots  = document.querySelectorAll('.carousel-dots .dot');
+
+  if (track && dots.length) {
+    track.addEventListener('scroll', function () {
+      var index = Math.round(track.scrollLeft / track.offsetWidth);
+      dots.forEach(function (d, i) {
+        d.classList.toggle('active', i === index);
+      });
+    }, { passive: true });
+  }
+
+
   // Simple intersection observer — tiles fade up on enter
   var tiles = document.querySelectorAll('.tile');
 

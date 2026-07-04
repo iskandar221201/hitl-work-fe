@@ -124,18 +124,25 @@
     <div class="tile-inner tile-inner-narrow">
       <p class="eyebrow">The loop</p>
       <h2 class="display-lg-ink">Every checkpoint,<br>three answers.</h2>
-      <div class="command-row">
-        <div class="command-block">
-          <code class="cmd">APPROVE</code>
-          <p class="cmd-desc">Accept the output. The next agent activates.</p>
+      <div class="command-carousel">
+        <div class="command-track">
+          <div class="command-block">
+            <code class="cmd">APPROVE</code>
+            <p class="cmd-desc">Accept the output. The next agent activates.</p>
+          </div>
+          <div class="command-block">
+            <code class="cmd">REVISE: [notes]</code>
+            <p class="cmd-desc">Give specific changes. The agent corrects and re-presents.</p>
+          </div>
+          <div class="command-block">
+            <code class="cmd">REJECT</code>
+            <p class="cmd-desc">Scrap it entirely. The agent asks for a new direction.</p>
+          </div>
         </div>
-        <div class="command-block">
-          <code class="cmd">REVISE: [notes]</code>
-          <p class="cmd-desc">Give specific changes. The agent corrects and re-presents.</p>
-        </div>
-        <div class="command-block">
-          <code class="cmd">REJECT</code>
-          <p class="cmd-desc">Scrap it entirely. The agent asks for a new direction.</p>
+        <div class="carousel-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
         </div>
       </div>
       <p class="tagline-sub">No agent proceeds without an explicit signal from you.</p>

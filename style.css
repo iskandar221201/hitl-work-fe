@@ -330,8 +330,7 @@ img { display: block; max-width: 100%; }
    Only grid-template-columns differs per section.
    ------------------------------------------- */
 .agent-grid,
-.modes-grid,
-.command-row {
+.modes-grid {
   display: grid;
   gap: var(--space-card-gap);
   margin-top: var(--space-card-top);
@@ -339,7 +338,37 @@ img { display: block; max-width: 100%; }
 }
 .agent-grid   { grid-template-columns: repeat(4, 1fr); }
 .modes-grid   { grid-template-columns: 1fr 1fr; }
-.command-row  { grid-template-columns: repeat(3, 1fr); }
+
+/* --- COMMAND CAROUSEL --- */
+.command-carousel {
+  margin-top: var(--space-card-top);
+  width: 100%;
+}
+.command-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-card-gap);
+  text-align: left;
+}
+
+/* Dots — hidden on desktop */
+.carousel-dots {
+  display: none;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--color-hairline);
+  transition: background 200ms ease, width 200ms ease;
+}
+.dot.active {
+  background: var(--color-primary);
+  width: 18px;
+}
 
 /* --- AGENT CARDS --- */
 .agent-card {
@@ -533,7 +562,22 @@ img { display: block; max-width: 100%; }
   .nav-links.is-open a { font-size: 17px; color: #fff; }
 
   .modes-grid  { grid-template-columns: 1fr; }
-  .command-row { grid-template-columns: 1fr; }
+  /* Carousel: switch to horizontal scroll snap on mobile */
+  .command-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: var(--space-card-gap);
+    padding-bottom: 4px;
+  }
+  .command-track::-webkit-scrollbar { display: none; }
+  .command-track .command-block {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+  }
+  .carousel-dots { display: flex; }
   .hero-display { font-size: 34px; }
   .display-lg, .display-lg-ink { font-size: 34px; }
   .lead, .lead-muted { font-size: 19px; }
