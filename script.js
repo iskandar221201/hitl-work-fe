@@ -57,29 +57,34 @@
   }
 
   /* --- CAROUSEL DOT SYNC --- */
-  var track = document.querySelector('.command-track');
-  var dots  = document.querySelectorAll('.carousel-dots .dot');
+  function initCarousel(trackSelector, dotsSelector) {
+    var track = document.querySelector(trackSelector);
+    var dots  = document.querySelectorAll(dotsSelector);
+    if (!track || !dots.length) return;
 
-  if (track && dots.length) {
-    track.addEventListener('scroll', function () {
-      var index = Math.round(track.scrollLeft / track.offsetWidth);
-      dots.forEach(function (d, i) {
-        d.classList.toggle('active', i === index);
+    var cards = track.children;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var index = Array.from(cards).indexOf(entry.target);
+          dots.forEach(function(d, i) {
+            d.classList.toggle('active', i === index);
+          });
+        }
       });
-    }, { passive: true });
+    }, {
+      root: track,
+      threshold: 0.6
+    });
+
+    Array.from(cards).forEach(function(card) {
+      observer.observe(card);
+    });
   }
 
-  var agentGrid = document.querySelector('.agent-grid');
-  var agentDots = document.querySelectorAll('.agent-dots .dot');
-
-  if (agentGrid && agentDots.length) {
-    agentGrid.addEventListener('scroll', function () {
-      var index = Math.round(agentGrid.scrollLeft / agentGrid.offsetWidth);
-      agentDots.forEach(function (d, i) {
-        d.classList.toggle('active', i === index);
-      });
-    }, { passive: true });
-  }
+  initCarousel('.command-track', '.command-carousel .carousel-dots .dot');
+  initCarousel('.agent-grid',    '.agent-dots .dot');
 
 
   // Simple intersection observer — tiles fade up on enter
