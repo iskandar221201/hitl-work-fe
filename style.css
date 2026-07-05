@@ -228,28 +228,30 @@ ul { list-style: none; }
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
 }
 .orb-1 {
-  width: 280px;
-  height: 280px;
-  top: -60px;
-  right: -80px;
-  background: radial-gradient(circle, rgba(0,102,204,0.18) 0%, transparent 70%);
+  width: 320px;
+  height: 320px;
+  top: -40px;
+  right: -100px;
+  background: radial-gradient(circle at center, rgba(0,102,204,0.35) 0%, rgba(0,102,204,0.15) 40%, transparent 70%);
+  filter: blur(40px);
 }
 .orb-2 {
-  width: 220px;
-  height: 220px;
-  bottom: 20px;
-  left: -60px;
-  background: radial-gradient(circle, rgba(41,151,255,0.13) 0%, transparent 70%);
+  width: 260px;
+  height: 260px;
+  bottom: -40px;
+  left: -80px;
+  background: radial-gradient(circle at center, rgba(41,151,255,0.28) 0%, rgba(41,151,255,0.10) 40%, transparent 70%);
+  filter: blur(35px);
 }
 .orb-3 {
-  width: 160px;
-  height: 160px;
-  top: 40%;
-  right: 10%;
-  background: radial-gradient(circle, rgba(0,102,204,0.08) 0%, transparent 70%);
+  width: 180px;
+  height: 180px;
+  top: 45%;
+  right: -20px;
+  background: radial-gradient(circle at center, rgba(0,102,204,0.20) 0%, transparent 70%);
+  filter: blur(30px);
 }
 
 /* --- HERO CODE BG — removed, replaced by orbs --- */
