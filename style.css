@@ -216,7 +216,49 @@ ul { list-style: none; }
 }
 .tile-inner-narrow { max-width: 720px; }
 
-/* --- HERO SPLIT --- */
+/* --- HERO CODE BG (mobile decorative) --- */
+.hero-code-bg {
+  display: none; /* desktop: hidden */
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  padding: calc(var(--nav-height) + 24px) 20px 24px;
+  flex-direction: column;
+  gap: 6px;
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,0.15) 15%,
+    rgba(0,0,0,0.15) 75%,
+    transparent 100%
+  );
+}
+.hero-code-line {
+  opacity: 0.13;
+  white-space: nowrap;
+  color: var(--color-ink);
+}
+.hero-code-line.hcl-dim  { opacity: 0.07; }
+.hero-code-line.hcl-comment { opacity: 0.10; }
+.hcl-kw      { color: #7c3aed; }
+.hcl-fn      { color: #0066cc; }
+.hcl-tag     { color: #0891b2; }
+.hcl-attr    { color: #b45309; }
+.hcl-str     { color: #059669; }
+.hcl-approve { color: #059669; font-weight: 700; }
+.hcl-dim     { color: var(--color-ink-muted); }
+
+/* hero section needs relative positioning for the bg */
+.tile-hero { position: relative; }
+.hero-split { position: relative; z-index: 1; }
+
+
 .tile-hero { padding-top: calc(var(--nav-height) + var(--space-section)); }
 
 .hero-split {
@@ -975,6 +1017,7 @@ ul { list-style: none; }
   .nav-links.is-open a { font-size: 17px; color: #fff; }
 
   /* Hero: stack on mobile */
+  .hero-code-bg { display: flex; }
   .hero-split {
     grid-template-columns: 1fr;
     gap: 40px;
