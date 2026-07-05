@@ -31,6 +31,7 @@ HITL.Work for FE is designed to run inside any chat-based AI assistant (Claude, 
 |---|---|
 | A DESIGN.md file (from anywhere) | **Mode A** |
 | A screenshot or Figma mockup | **Mode B** |
+| A live website URL or codebase | **Mode C** → Design Generator |
 | Neither | Fill in `DESIGN-TEMPLATE.md` first, then Mode A |
 
 ---
@@ -94,7 +95,29 @@ Trigger Skill Extractor
 
 ## Prompt-by-Prompt: How to Talk to the Agent
 
-### PROMPT #1 — Start Session & Activate Planner
+### PROMPT #1B — Mode C: Activate Design Generator (if you have a URL or codebase)
+
+Run this **before** Prompt #1 if you don't have a DESIGN.md yet.
+
+```
+You will run the DESIGN GENERATOR — an agent that extracts a design
+system from an existing source and produces a DESIGN.md.
+
+Read the following instructions:
+---
+[paste contents of DESIGN-GENERATOR.md here]
+---
+
+Source input:
+[URL: https://... OR path: ./src]
+
+Run the extraction, produce a draft DESIGN.md, and wait for my
+approval before handing off to the Planner.
+```
+
+After APPROVE from the Design Generator, continue to Prompt #1 with the generated DESIGN.md.
+
+---
 
 This is the first message you send at the start of every session. Copy the relevant file contents and paste them into this prompt.
 

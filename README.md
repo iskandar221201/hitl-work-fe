@@ -31,14 +31,16 @@ You have a visual reference but no written spec. AI generates the DESIGN.md firs
 
 ```
 hitl-fe/
-├── README.md             ← You are here
-├── PROJECT-BRIEF.md      ← Fill this before starting any session
-├── DESIGN-TEMPLATE.md    ← Reference / starter DESIGN.md
-├── PLANNER.md            ← Agent 1: parse, normalize, plan
-├── EXECUTOR.md           ← Agent 2: generate code per component
-├── QA.md                 ← Agent 3: consistency, a11y, naming
-├── SKILL-EXTRACTOR.md    ← Agent 4: capture reusable patterns
-└── HITL.md               ← Checkpoint protocol (used across all agents)
+├── README.md                ← You are here
+├── PROJECT-BRIEF.md         ← Fill this before starting any session
+├── DESIGN-TEMPLATE.md       ← Reference / starter DESIGN.md
+└── docs/
+    ├── DESIGN-GENERATOR.md  ← Agent 0: extract DESIGN.md from URL or codebase
+    ├── PLANNER.md           ← Agent 1: parse, normalize, plan
+    ├── EXECUTOR.md          ← Agent 2: generate code per component
+    ├── QA.md                ← Agent 3: consistency, a11y, naming
+    ├── SKILL-EXTRACTOR.md   ← Agent 4: capture reusable patterns
+    └── HITL.md              ← Checkpoint protocol (used across all agents)
 ```
 
 ---
@@ -46,7 +48,10 @@ hitl-fe/
 ## How a Session Works
 
 1. **Fill `PROJECT-BRIEF.md`** — stack, output format, scope
-2. **Provide input** — paste your DESIGN.md (Mode A) or upload a screenshot (Mode B)
+2. **Provide input** — three entry modes:
+   - **Mode A:** Paste your DESIGN.md directly → Planner
+   - **Mode B:** Upload a screenshot or mockup → Planner derives spec
+   - **Mode C:** Provide a URL or codebase → Design Generator extracts spec → Planner
 3. **Planner runs** → produces component list + priority order → **you approve**
 4. **Executor runs** → generates code per component → **you review each one**
 5. **QA runs** → checks consistency + accessibility → **you approve final**
