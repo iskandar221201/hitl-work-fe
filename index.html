@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HITL·Work for FE — Design System to Code</title>
+  <title>HITL·Work for FE — Anti-slop design workflow</title>
   <meta name="description" content="A human-in-the-loop workflow for turning design systems into production UI components. Four agents, one human, full control." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,15 +28,63 @@
     </div>
   </nav>
 
-  <!-- HERO TILE — white -->
+  <!-- HERO — split layout -->
   <section class="tile tile-light tile-hero">
-    <div class="tile-inner">
-      <p class="eyebrow">HITL·Work for FE</p>
-      <h1 class="hero-display">Anti-slop design.</h1>
-      <p class="lead">A human-in-the-loop workflow for frontend. Four agents. Every decision, yours.</p>
-      <div class="cta-group">
-        <a href="https://github.com/iskandar221201/hitl-work-fe" target="_blank" class="btn-primary">Get Started</a>
-        <a href="#how-it-works" class="btn-secondary-pill">See how it works</a>
+    <div class="hero-split">
+      <div class="hero-text">
+        <p class="eyebrow">HITL·Work for FE</p>
+        <h1 class="hero-display">Anti-slop<br>design.</h1>
+        <p class="lead">A human-in-the-loop workflow for frontend. Four agents. Every decision, yours.</p>
+        <div class="cta-group cta-left">
+          <a href="https://github.com/iskandar221201/hitl-work-fe" target="_blank" class="btn-primary">Get Started</a>
+          <a href="#how-it-works" class="btn-secondary-pill">See how it works</a>
+        </div>
+      </div>
+
+      <!-- CSS UI MOCKUP — workflow in action -->
+      <div class="hero-mockup" aria-hidden="true">
+        <div class="mockup-window">
+          <div class="mockup-titlebar">
+            <span class="mockup-dot red"></span>
+            <span class="mockup-dot yellow"></span>
+            <span class="mockup-dot green"></span>
+            <span class="mockup-title">HITL·Work for FE — Session</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-agent-row">
+              <span class="mockup-badge agent">PLANNER</span>
+              <span class="mockup-status done">✓</span>
+            </div>
+            <div class="mockup-component-preview">
+              <div class="mockup-component-label">Building: Button.jsx</div>
+              <div class="mockup-component-code">
+                <span class="code-kw">const</span> <span class="code-fn">Button</span> = ({ variant, size }) =&gt; (<br/>
+                &nbsp;&nbsp;<span class="code-tag">&lt;button</span> <span class="code-attr">className</span>={<span class="code-str">variants[variant]</span>}<span class="code-tag">&gt;</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;{children}<br/>
+                &nbsp;&nbsp;<span class="code-tag">&lt;/button&gt;</span><br/>
+                )
+              </div>
+            </div>
+            <div class="mockup-pre-emit">
+              <span class="mockup-pre-emit-label">pre-emit</span>
+              <div class="mockup-scores">
+                <span class="score-pill">SF<b>5</b></span>
+                <span class="score-pill">A<b>5</b></span>
+                <span class="score-pill">C<b>4</b></span>
+                <span class="score-pill">CQ<b>5</b></span>
+                <span class="score-pill">Co<b>5</b></span>
+              </div>
+            </div>
+            <div class="mockup-hitl-row">
+              <span class="mockup-hitl-label">HITL Checkpoint</span>
+              <div class="mockup-hitl-actions">
+                <button class="mockup-btn approve">APPROVE</button>
+                <button class="mockup-btn revise">REVISE</button>
+                <button class="mockup-btn reject">REJECT</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -45,7 +93,7 @@
   <section class="tile tile-dark">
     <div class="tile-inner">
       <h2 class="display-lg">AI is weak<br>at frontend.</h2>
-      <p class="lead-muted">It generates UI that works but never feels right.<br>Generic components. Inconsistent tokens. No human in the loop.</p>
+      <p class="lead-muted">It generates UI that works but never feels right. Generic components. Inconsistent tokens. No human in the loop.</p>
       <ul class="problem-list">
         <li>Colors that don't match your design system</li>
         <li>Components that ignore spacing rules</li>
@@ -54,34 +102,107 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS TILE — parchment -->
+  <!-- HOW IT WORKS — parchment, cards with CSS illustrations -->
   <section class="tile tile-parchment" id="how-it-works">
     <div class="tile-inner">
       <p class="eyebrow-dark">The workflow</p>
       <h2 class="display-lg-ink">Four agents.<br>One human.</h2>
       <p class="tagline-body">Every agent stops and waits for your approval before moving on. No silent decisions.</p>
+
       <div class="agent-carousel">
         <div class="agent-grid">
+
+          <!-- Planner card -->
           <div class="agent-card">
+            <div class="agent-illus agent-illus-planner" aria-hidden="true">
+              <div class="illus-file">
+                <div class="illus-file-line w80"></div>
+                <div class="illus-file-line w60"></div>
+                <div class="illus-file-line w70"></div>
+                <div class="illus-file-sep"></div>
+                <div class="illus-tag blue">color-primary</div>
+                <div class="illus-tag blue">font-body</div>
+                <div class="illus-tag blue">radius-md</div>
+              </div>
+              <div class="illus-arrow">→</div>
+              <div class="illus-list">
+                <div class="illus-list-item">01 Button</div>
+                <div class="illus-list-item">02 Badge</div>
+                <div class="illus-list-item">03 Input</div>
+              </div>
+            </div>
             <div class="agent-number">01</div>
             <h3 class="agent-title">Planner</h3>
             <p class="agent-desc">Reads your DESIGN.md — in any format — normalizes the tokens, and proposes a component build order. You approve the scope.</p>
           </div>
+
+          <!-- Executor card -->
           <div class="agent-card">
+            <div class="agent-illus agent-illus-executor" aria-hidden="true">
+              <div class="illus-code-block">
+                <div class="illus-code-bar"></div>
+                <div class="illus-code-line w90"></div>
+                <div class="illus-code-line w70 indent"></div>
+                <div class="illus-code-line w80 indent"></div>
+                <div class="illus-code-line w50 indent"></div>
+                <div class="illus-code-line w60"></div>
+              </div>
+              <div class="illus-states">
+                <span class="illus-state active">default</span>
+                <span class="illus-state">hover</span>
+                <span class="illus-state">focus</span>
+                <span class="illus-state">disabled</span>
+              </div>
+            </div>
             <div class="agent-number">02</div>
             <h3 class="agent-title">Executor</h3>
             <p class="agent-desc">Generates one component at a time, adapted to your stack. Every variant, every state, every a11y attribute. You review each one.</p>
           </div>
+
+          <!-- QA card -->
           <div class="agent-card">
+            <div class="agent-illus agent-illus-qa" aria-hidden="true">
+              <div class="illus-qa-row pass">
+                <span class="illus-qa-icon">✓</span>
+                <div class="illus-qa-bar w90"></div>
+                <span class="illus-qa-label">PASS</span>
+              </div>
+              <div class="illus-qa-row pass">
+                <span class="illus-qa-icon">✓</span>
+                <div class="illus-qa-bar w75"></div>
+                <span class="illus-qa-label">PASS</span>
+              </div>
+              <div class="illus-qa-row fail">
+                <span class="illus-qa-icon">✗</span>
+                <div class="illus-qa-bar w60"></div>
+                <span class="illus-qa-label">FAIL</span>
+              </div>
+              <div class="illus-qa-row minor">
+                <span class="illus-qa-icon">!</span>
+                <div class="illus-qa-bar w80"></div>
+                <span class="illus-qa-label">Minor</span>
+              </div>
+            </div>
             <div class="agent-number">03</div>
             <h3 class="agent-title">QA</h3>
             <p class="agent-desc">Checks consistency against the design system, accessibility compliance, and code quality. Issues are graded PASS, FAIL, or Minor.</p>
           </div>
+
+          <!-- Skill Extractor card -->
           <div class="agent-card">
+            <div class="agent-illus agent-illus-skill" aria-hidden="true">
+              <div class="illus-memory">
+                <div class="illus-memory-header">STYLE-MEMORY.md</div>
+                <div class="illus-memory-rule">↺ radius → rounded-md</div>
+                <div class="illus-memory-rule">↺ disabled → opacity-50</div>
+                <div class="illus-memory-rule new">↺ focus → ring-2 ring-offset-2</div>
+              </div>
+            </div>
             <div class="agent-number">04</div>
             <h3 class="agent-title">Skill Extractor</h3>
             <p class="agent-desc">Logs every correction you made as a reusable rule. The next session starts smarter — without re-explaining the same preferences.</p>
           </div>
+
         </div>
         <div class="carousel-dots agent-dots">
           <span class="dot active"></span>
@@ -93,59 +214,112 @@
     </div>
   </section>
 
-  <!-- MODES TILE — dark 2 -->
+  <!-- MODES TILE — dark 2, with flow diagrams -->
   <section class="tile tile-dark-2" id="modes">
     <div class="tile-inner">
       <p class="eyebrow-on-dark">Entry modes</p>
-      <h2 class="display-lg">Two ways<br>to start.</h2>
+      <h2 class="display-lg">Three ways<br>to start.</h2>
       <div class="modes-grid">
+
         <div class="mode-card">
+          <div class="mode-illus" aria-hidden="true">
+            <div class="mode-illus-file">
+              <span class="mode-file-icon">📄</span>
+              <span class="mode-file-name">DESIGN.md</span>
+            </div>
+            <div class="mode-illus-arrow">→</div>
+            <div class="mode-illus-agent">Planner</div>
+          </div>
           <div class="mode-label">Mode A</div>
           <h3 class="mode-title">You have a DESIGN.md</h3>
           <p class="mode-desc">Drop in your design system document — from Figma exports, community templates, or your own spec. The Planner parses any format.</p>
-          <div class="mode-flow">
-            <span>DESIGN.md</span>
-            <span class="arrow">→</span>
-            <span>Planner</span>
-            <span class="arrow">→</span>
-            <span>Pipeline</span>
-          </div>
         </div>
+
         <div class="mode-card">
+          <div class="mode-illus" aria-hidden="true">
+            <div class="mode-illus-file">
+              <span class="mode-file-icon">🖼</span>
+              <span class="mode-file-name">mockup.png</span>
+            </div>
+            <div class="mode-illus-arrow">→</div>
+            <div class="mode-illus-agent">Draft spec</div>
+            <div class="mode-illus-arrow">→</div>
+            <div class="mode-illus-agent">Planner</div>
+          </div>
           <div class="mode-label">Mode B</div>
           <h3 class="mode-title">You have a mockup</h3>
-          <p class="mode-desc">Upload a screenshot or Figma frame. The Planner derives a DESIGN.md from your visual — you review it — then the normal pipeline begins.</p>
-          <div class="mode-flow">
-            <span>Screenshot</span>
-            <span class="arrow">→</span>
-            <span>Draft spec</span>
-            <span class="arrow">→</span>
-            <span>Pipeline</span>
-          </div>
+          <p class="mode-desc">Upload a screenshot or Figma frame. The agent derives a DESIGN.md from your visual — you review it — then the pipeline begins.</p>
         </div>
+
+        <div class="mode-card mode-card-full">
+          <div class="mode-illus" aria-hidden="true">
+            <div class="mode-illus-file">
+              <span class="mode-file-icon">🌐</span>
+              <span class="mode-file-name">yoursite.com</span>
+            </div>
+            <div class="mode-illus-arrow">→</div>
+            <div class="mode-illus-agent">Generator</div>
+            <div class="mode-illus-arrow">→</div>
+            <div class="mode-illus-agent">DESIGN.md</div>
+            <div class="mode-illus-arrow">→</div>
+            <div class="mode-illus-agent">Planner</div>
+          </div>
+          <div class="mode-label">Mode C</div>
+          <h3 class="mode-title">You have a live site or codebase</h3>
+          <p class="mode-desc">Point to a URL or your codebase. The Design Generator extracts tokens, colors, and typography — then produces a DESIGN.md with confidence markers.</p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- HITL SECTION — white -->
+  <!-- HITL LOOP — white, command cards -->
   <section class="tile tile-light">
     <div class="tile-inner tile-inner-narrow">
       <p class="eyebrow">The loop</p>
       <h2 class="display-lg-ink">Every checkpoint,<br>three answers.</h2>
       <div class="command-carousel">
         <div class="command-track">
+
           <div class="command-block">
+            <div class="cmd-illus cmd-illus-approve" aria-hidden="true">
+              <div class="cmd-indicator approve"></div>
+              <div class="cmd-lines">
+                <div class="cmd-line w70"></div>
+                <div class="cmd-line w50"></div>
+              </div>
+              <span class="cmd-check">✓</span>
+            </div>
             <code class="cmd">APPROVE</code>
-            <p class="cmd-desc">Accept the output. The next agent activates.</p>
+            <p class="cmd-desc">Accept the output. The agent logs it and the next one activates automatically.</p>
           </div>
+
           <div class="command-block">
+            <div class="cmd-illus cmd-illus-revise" aria-hidden="true">
+              <div class="cmd-indicator revise"></div>
+              <div class="cmd-lines">
+                <div class="cmd-line w70"></div>
+                <div class="cmd-line w50"></div>
+              </div>
+              <div class="cmd-note">border-radius → rounded-md</div>
+            </div>
             <code class="cmd">REVISE: [notes]</code>
-            <p class="cmd-desc">Give specific changes. The agent corrects and re-presents.</p>
+            <p class="cmd-desc">Give specific changes. The agent corrects and re-presents the full component for another review.</p>
           </div>
+
           <div class="command-block">
+            <div class="cmd-illus cmd-illus-reject" aria-hidden="true">
+              <div class="cmd-indicator reject"></div>
+              <div class="cmd-lines">
+                <div class="cmd-line w70"></div>
+                <div class="cmd-line w50"></div>
+              </div>
+              <span class="cmd-x">✕</span>
+            </div>
             <code class="cmd">REJECT</code>
-            <p class="cmd-desc">Scrap it entirely. The agent asks for a new direction.</p>
+            <p class="cmd-desc">Scrap it entirely. The agent asks for a new direction before attempting again.</p>
           </div>
+
         </div>
         <div class="carousel-dots">
           <span class="dot active"></span>
@@ -158,10 +332,10 @@
   </section>
 
   <!-- CTA TILE — dark -->
-  <section class="tile tile-dark tile-cta">
+  <section class="tile tile-dark">
     <div class="tile-inner">
       <h2 class="display-lg">Start building.</h2>
-      <p class="lead-muted">Free. Open source. Model-agnostic.<br>Works with Claude, GPT-4, Gemini — any chat AI.</p>
+      <p class="lead-muted">Free. Open source. Model-agnostic. Works with Claude, GPT-4, Gemini — any chat AI.</p>
       <div class="cta-group">
         <a href="https://github.com/iskandar221201/hitl-work-fe" target="_blank" class="btn-primary">Download on GitHub</a>
         <a href="https://human-in-the-loop-workflow.vercel.app" target="_blank" class="btn-link-on-dark">HITL·Work original →</a>
