@@ -216,50 +216,43 @@ ul { list-style: none; }
 }
 .tile-inner-narrow { max-width: 720px; }
 
-/* --- HERO CODE BG (mobile decorative) --- */
-.hero-code-bg {
-  display: none; /* desktop: hidden */
+/* --- HERO ORBS (mobile decorative) --- */
+.hero-orbs {
+  display: none;
   position: absolute;
   inset: 0;
-  overflow: hidden;
   pointer-events: none;
   z-index: 0;
-  padding: calc(var(--nav-height) + 24px) 20px 24px;
-  flex-direction: column;
-  gap: 6px;
-  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
-  font-size: 11px;
-  line-height: 1.6;
-  letter-spacing: 0;
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 20%,
-    black 70%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 20%,
-    black 70%,
-    transparent 100%
-  );
+  overflow: hidden;
 }
-.hero-code-line {
-  opacity: 0.28;
-  white-space: nowrap;
-  color: var(--color-ink);
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
 }
-.hero-code-line.hcl-dim  { opacity: 0.16; }
-.hero-code-line.hcl-comment { opacity: 0.22; }
-.hcl-kw      { color: #7c3aed; }
-.hcl-fn      { color: #0066cc; }
-.hcl-tag     { color: #0891b2; }
-.hcl-attr    { color: #b45309; }
-.hcl-str     { color: #059669; }
-.hcl-approve { color: #059669; font-weight: 700; }
-.hcl-dim     { color: var(--color-ink-muted); }
+.orb-1 {
+  width: 280px;
+  height: 280px;
+  top: -60px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(0,102,204,0.18) 0%, transparent 70%);
+}
+.orb-2 {
+  width: 220px;
+  height: 220px;
+  bottom: 20px;
+  left: -60px;
+  background: radial-gradient(circle, rgba(41,151,255,0.13) 0%, transparent 70%);
+}
+.orb-3 {
+  width: 160px;
+  height: 160px;
+  top: 40%;
+  right: 10%;
+  background: radial-gradient(circle, rgba(0,102,204,0.08) 0%, transparent 70%);
+}
+
+/* --- HERO CODE BG — removed, replaced by orbs --- */
 
 /* hero section needs relative positioning for the bg */
 .tile-hero {
@@ -1027,7 +1020,7 @@ ul { list-style: none; }
   .nav-links.is-open a { font-size: 17px; color: #fff; }
 
   /* Hero: stack on mobile */
-  .hero-code-bg { display: flex; }
+  .hero-orbs { display: block; }
   .hero-split {
     grid-template-columns: 1fr;
     gap: 40px;
