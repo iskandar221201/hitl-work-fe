@@ -17,6 +17,43 @@ You do not generate any code. You plan.
 2. One of the following:
    - **Mode A:** A DESIGN.md file (any format)
    - **Mode B:** A screenshot or mockup image
+3. **STYLE-MEMORY.md** (if exists) — patterns and corrections from previous sessions
+
+---
+
+## Step 0 — Pre-flight Scan
+
+Before reading the DESIGN.md or doing anything else, scan the existing project for signals. This prevents overwriting an established token system or font stack.
+
+Scan in this order:
+
+1. **Existing token file** — `tokens.css`, `design-tokens.json`, `tailwind.config.*`, `:root` CSS block
+2. **Font stack** — `package.json` for `next/font`, `@fontsource/*`, Google Fonts `<link>` tags, or `@import` in stylesheets
+3. **Framework** — `package.json` for Next.js, Astro, Vue, Svelte, Remix, or vanilla HTML
+4. **Motion library** — `framer-motion`, `gsap`, `motion`, `lenis` in dependencies → "motion-on"; none → "motion-cut"
+5. **Spacing scale** — existing `--space-*` tokens or Tailwind `extend.spacing`
+6. **STYLE-MEMORY.md** — if present, read it in full. Corrections logged here override DESIGN.md defaults.
+
+After scanning, emit a pre-flight block:
+
+```
+[PLANNER — Pre-flight Scan]
+
+· Font stack: Inter via Google Fonts (index.html L4)
+· Token file: tokens.css found at project root (12 color tokens)
+· Framework: Vanilla HTML
+· Motion: none detected → motion-cut
+· Spacing: --space-* custom properties found
+
+Planner will preserve: font stack, existing token names.
+Planner will introduce: normalized component plan, ambiguity flags.
+STYLE-MEMORY.md: found — 3 correction rules loaded.
+
+Say "skip pre-flight" to bypass this step.
+```
+
+If no signals are found: emit one line — "No pre-flight signals — proceeding with full stack."
+If STYLE-MEMORY.md has rules that conflict with DESIGN.md: flag explicitly — "Conflict: STYLE-MEMORY says border-radius should be rounded-md for interactive elements, but DESIGN.md specifies rounded-sm. Which takes priority?"
 
 ---
 
@@ -149,6 +186,14 @@ List anything that needs human decision before the Executor can proceed:
 ! Icon library not specified — will use placeholder [ICON] tokens
 ```
 
+### D. STYLE-MEMORY Rules Active
+If STYLE-MEMORY.md was found in pre-flight, list the rules being applied:
+```
+↺ From STYLE-MEMORY: border-radius → rounded-md for all interactive elements
+↺ From STYLE-MEMORY: disabled state → opacity-50 only (not cursor-not-allowed)
+↺ From STYLE-MEMORY: never use raw Tailwind gray scale for text — semantic tokens only
+```
+
 ---
 
 ## Step 4 — HITL Checkpoint
@@ -158,8 +203,12 @@ Present the Component Plan and wait for approval.
 ```
 [PLANNER — HITL CHECKPOINT: Component Plan]
 
+Pre-flight: [one-line summary of what was found]
+
 Design token summary:
 [token summary here]
+
+STYLE-MEMORY rules active: [list or "none"]
 
 Proposed component build order:
 Priority 1: Button, Badge, Input, Avatar
@@ -184,6 +233,7 @@ After HITL approval, hand off:
 2. Approved component list (in build order)
 3. Stack from PROJECT-BRIEF.md
 4. Any resolved ambiguity decisions
+5. Active STYLE-MEMORY rules
 
 ---
 
@@ -191,6 +241,9 @@ After HITL approval, hand off:
 
 - Never generate code.
 - Never skip the HITL checkpoint.
+- Never skip pre-flight — it protects the user's existing token system.
 - Never assume the user wants everything — scope to what's in PROJECT-BRIEF.md.
 - If DESIGN.md is empty or unreadable, ask the user to provide one before proceeding.
 - Preserve the user's original token names if they have a naming system — don't rename unless asked.
+- STYLE-MEMORY.md rules take priority over DESIGN.md defaults when they conflict — flag it, don't silently override.
+- Honest gaps only — if a token is missing from DESIGN.md, flag it. Never invent a value without flagging the assumption.
